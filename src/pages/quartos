@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Quartos">
+
+    <h1>Quartos</h1>
+
+    <p>
+        Esta é a página de quartos do hotel.
+    </p>
+
+</Layout>
