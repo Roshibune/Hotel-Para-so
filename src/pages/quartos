@@ -1,13 +1,39 @@
----
 import Layout from '../layouts/Layout.astro';
----
+import CardQuarto from '../components/Card_Quarto.astro';
 
+const quartos = [
+  {
+    nome: "Quarto Casal",
+    preco: "R$ 230",
+    descricao: "Ideal para seus momentos românticos com seu par."
+    imagem: "/imagens/quarto2.jpg"
+  },
+
+  {
+    nome: "Quarto Familiar",
+    preco: "R$ 280",
+    descricao: "Mais espaço e conforto para toda a família."
+    imagem: "/imagens/quarto_familia.jpg"
+  },
+
+  {
+    nome: "Quarto Duplo",
+    preco: "R$ 220",
+    descricao: "Acomodação aconchegante para duas pessoas."
+    imagem: "/imagens/quarto1.jpg"
+  }
+];
 <Layout title="Quartos">
-
-    <h1>Quartos</h1>
-
-    <p>
-        Esta é a página de quartos do hotel.
-    </p>
-
+  <h1>Nossos Quartos</h1>
+  <p>Conheça nossos quartos e encontre a acomodação ideal para sua estadia. Com ambientes confortáveis, modernos e bem equipados, oferecemos opções pensadas para garantir descanso, praticidade e bem-estar durante toda a sua hospedagem.</p>
+  {
+    quartos.map((quarto) => 
+    (
+      <CardQuarto
+        nome={quarto.nome}
+        descricao={quarto.descricao}
+        preco={quarto.preco}
+        imagem={quarto.imagem}/>
+    ))
+  }
 </Layout>
