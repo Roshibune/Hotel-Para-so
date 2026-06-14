@@ -1,17 +1,38 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Hotel Paraíso">
+	<section>
+		<h1>Hotel Paraíso</h1>
+		<p>Conforto, tranquilidade e a melhor experiência para sua hospedagem.</p>
+	</section>
+
+	<section>
+
+		<h2>Sobre o Hotel:</h2>
+		<img src="/imagem/hotel.webp" class="img-hotel" alt="Hotel">
+		<p>Bem-vindo ao nosso hotel, um espaço criado para proporcionar conforto, tranquilidade e uma experiência inesquecível para cada 
+		hóspede. Localizado em uma região privilegiada, oferecemos acomodações modernas, ambientes acolhedores e serviços pensados para 
+		atender às necessidades de quem viaja a lazer ou a negócios.<br>
+		Nossa estrutura conta com quartos confortáveis, uma ampla área de lazer e diversas opções para momentos de descanso e diversão. Os 
+		hóspedes podem desfrutar de uma grande piscina, ideal para relaxar e aproveitar os dias de sol, além de uma sauna que proporciona 
+		bem-estar e renovação após um dia de atividades. Para quem deseja manter a rotina de exercícios, disponibilizamos uma academia 
+		equipada com aparelhos modernos.<br>
+		Mais do que um lugar para se hospedar, nosso hotel é um ambiente onde conforto, qualidade e hospitalidade se unem para oferecer uma 
+		experiência completa. Seja para uma viagem em família, uma escapada de fim de semana ou uma estadia a trabalho, estamos preparados 
+		para tornar cada momento especial e inesquecível.</p>
+	</section>
+
+	<section>
+		<h2>Galeria</h2>
+		<img src="/imagens/recepcao.jpg" alt="Recepção">
+		<img src="/imagens/quarto_familia.jpg" alt="Quarto">
+		<img src="/imagens/quarto1.jpg" alt="Quarto duas pessoas">
+		<img src="/imagens/quarto2.jpg" alt="Quarto casal">
+		<img src="/imagens/piscina.jpg" alt="Piscina">
+		<img src="/imagens/area_de_lazer.webp" alt="Área de Lazer">
+		<img src="/imagens/academia.webp" alt="Academia">
+		<img src="/imagens/sauna.jpg" alt="Sauna">
+	</section>
+</Layout>
