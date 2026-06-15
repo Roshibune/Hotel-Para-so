@@ -37,7 +37,7 @@ import Layout from '../layouts/Layout.astro';
         min="1"
         value="1">
     <h3 id="total">Total: R$ 230 </h3>
-    <button id="botReserva">Confirmar Reserva</button>
+    <button id="btnReserva">Confirmar Reserva</button>
     <div id="mensagemReserva"></div>
 
     <script>
@@ -70,44 +70,50 @@ import Layout from '../layouts/Layout.astro';
             ]
         };
 
-        function mostrarDisponibilidade() 
+        function mostrarDisponibilidade()
         {
             const dataSelecionada = data.value;
             const quartos = quartosDisponiveis[dataSelecionada];
-            quarto.innerHTML = "";
-            quartos.forEach((nomeQuarto) => 
-            {
-                const opcao = document.createElement("option");
-            });
-            opcao.textContent = nomeQuarto;
-            if (nomeQuarto === "Quarto Casal") 
-            {
-                opcao.value = 230;
-            }
-            if (nomeQuarto === "Quarto Familiar") 
-            {
-                opcao.value = 280;
-            }
-            if (nomeQuarto === "Quarto Duplo") 
-            {
-                opcao.value = 220;
-            }
-            quarto.appendChild(opcao);
 
-            if (!quartos) 
+            if (!quartos)
             {
-                disponibilidade.innerHTML ="<p>Nenhuma disponibilidade cadastrada.</p>";
+                disponibilidade.innerHTML = "<p>Nenhuma disponibilidade cadastrada.</p>";
+                quarto.innerHTML = "";
                 return;
             }
 
-            disponibilidade.innerHTML = `<h3>Quartos disponíveis:</h3>
+            quarto.innerHTML = "";
+            quartos.forEach((nomeQuarto) =>
+            {
+                const opcao = document.createElement("option");
+                opcao.textContent = nomeQuarto;
+                if (nomeQuarto === "Quarto Casal")
+                {
+                    opcao.value = 230;
+                }
+
+                if (nomeQuarto === "Quarto Familiar")
+                {
+                    opcao.value = 280;
+                }
+
+                if (nomeQuarto === "Quarto Duplo")
+                {
+                    opcao.value = 220;
+                }
+
+                quarto.appendChild(opcao);
+            });
+
+            disponibilidade.innerHTML = `
+                <h3>Quartos disponíveis:</h3>
                 <ul>
                     ${quartos
-                        .map(quarto =>`<li>${quarto}</li>`)
-                        .join("")
-                    }
+                        .map(quarto => `<li>${quarto}</li>`)
+                        .join("")}
                 </ul>
             `;
+
             calcularTotal();
         }
 
