@@ -3,6 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+h1, h2, h3 {
+    text-align: center;
+}
 
 body {
     font-family: Times New Roman, serif;
@@ -24,7 +27,13 @@ nav a:hover {
 }
 
 main {
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
+}
+section {
+    text-align: center;
+    margin-bottom: 40px;
 }
 .card {
     width: 300px;
@@ -69,5 +78,25 @@ button {
     margin-top: 20px;
     padding: 15px;
     border: 1px solid #ddd;
+    border-radius: 10px;
+}
+.img-hotel {
+    display: block;
+    margin: 20px auto;
+    width: 80%;
+    max-width: 800px;
+    border-radius: 10px;
+}
+.galeria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.galeria img {
+    width: 250px;
+    height: 180px;
+    object-fit: cover;
     border-radius: 10px;
 }
