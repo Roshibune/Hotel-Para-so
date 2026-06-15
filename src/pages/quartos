@@ -1,5 +1,7 @@
+---
 import Layout from '../layouts/Layout.astro';
 import CardQuarto from '../components/Card_Quarto.astro';
+---
 
 const quartos = [
   {
