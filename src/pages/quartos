@@ -24,7 +24,7 @@ const quartos = [
   }
 ];
 <Layout title="Quartos">
-  <h1>Nossos Quartos</h1>
+  <h2>Nossos Quartos</h2>
   <p>Conheça nossos quartos e encontre a acomodação ideal para sua estadia. Com ambientes confortáveis, modernos e bem equipados, oferecemos opções pensadas para garantir descanso, praticidade e bem-estar durante toda a sua hospedagem.</p>
   {
     quartos.map((quarto) => 

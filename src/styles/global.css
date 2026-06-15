@@ -59,3 +59,15 @@ footer {
     padding: 30px;
     margin-top: 50px;
 }
+button {
+    padding: 10px 20px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+#mensagemReserva {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}

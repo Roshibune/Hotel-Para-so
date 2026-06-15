@@ -1,18 +1,19 @@
 import Layout from '../layouts/Layout.astro';
 <Layout title="Reservas">
 
-    <h1>Reservas</h1>
-    <label>
-        Data:
-    </label>
+    <h2>Reservas</h2>
+    <label>Data:</label>
     <input
         type="date"
         id="data">
     <br><br>
-    <label>
-        Quarto:
-    </label>
 
+    <div id="disponibilidade">
+
+    </div>
+    <br>
+
+    <label>Quarto:</label>
     <select id="quarto">
         <option value="180">
             Standard
@@ -26,13 +27,119 @@ import Layout from '../layouts/Layout.astro';
     </select>
     <br><br>
 
-    <label>
-        Diárias:
-    </label>
+    <label>Diárias:</label>
     <input
         type="number"
         id="diarias"
         min="1"
         value="1">
-    <h2 id="total">Total: R$ 180 </h2>
+    <h3 id="total">Total: R$ 180 </h3>
+    <button id="botReserva">Confirmar Reserva</button>
+    <div id="mensagemReserva"></div>
+
+    <script>
+        const data = document.getElementById("data");
+        const disponibilidade = document.getElementById("disponibilidade");
+        const quarto = document.getElementById("quarto");
+        const diarias = document.getElementById("diarias");
+        const total = document.getElementById("total");
+        const btnReserva = document.getElementById("btnReserva");
+        const mensagemReserva = document.getElementById("mensagemReserva");
+
+        const quartosDisponiveis = 
+        {
+            "2026-06-20": 
+            [
+                "Quarto Familiar",
+                "Quarto Casal"
+            ],
+
+            "2026-06-21": 
+            [
+                "Quarto Casal",
+                "Quarto Duplo"
+            ],
+
+            "2026-06-22": 
+            [
+                "Quarto Familiar",
+                "Quarto Duplo"
+            ]
+        };
+
+        function mostrarDisponibilidade() 
+        {
+            const dataSelecionada = data.value;
+            const quartos = quartosDisponiveis[dataSelecionada];
+            quarto.innerHTML = "";
+            quartos.forEach((nomeQuarto) => 
+            {
+                const opcao = document.createElement("option");
+            });
+            opcao.textContent = nomeQuarto;
+            if (nomeQuarto === "Quarto Casal") 
+            {
+                opcao.value = 230;
+            }
+            if (nomeQuarto === "Quarto Familiar") 
+            {
+                opcao.value = 280;
+            }
+            if (nomeQuarto === "Quarto Duplo") 
+            {
+                opcao.value = 220;
+            }
+            quarto.appendChild(opcao);
+
+            if (!quartos) 
+            {
+                disponibilidade.innerHTML ="<p>Nenhuma disponibilidade cadastrada.</p>";
+                return;
+            }
+
+            disponibilidade.innerHTML = `<h3>Quartos disponíveis:</h3>
+                <ul>
+                    ${quartos
+                        .map(quarto =>`<li>${quarto}</li>`)
+                        .join("")
+                    }
+                </ul>
+            `;
+            calcularTotal();
+        }
+
+        function calcularTotal() 
+        {
+            const preco = Number(quarto.value);
+            const quantidade = Number(diarias.value);
+            const resultado = preco * quantidade;
+            total.textContent = `Total: R$ ${resultado}`;
+        }
+
+        function confirmarReserva() 
+        {
+            const dataSelecionada = data.value;
+            const quartoSelecionado = quarto.options[quarto.selectedIndex].text;
+            const quantidade = diarias.value;
+            const valor = quarto.value * quantidade;
+            if (!dataSelecionada) 
+            {
+                mensagemReserva.innerHTML ="<p>Selecione uma data antes de reservar.</p>";
+                return;
+            }
+
+            mensagemReserva.innerHTML = `
+                <h4>Reserva realizada com sucesso!</h4>
+                <p><strong>Data:</strong> ${dataSelecionada}</p>
+                <p><strong>Quarto:</strong> ${quartoSelecionado}</p>
+                <p><strong>Diárias:</strong> ${quantidade}</p>
+                <p><strong>Valor Total:</strong> R$ ${valor}</p>
+            `;
+        }
+
+        data.addEventListener("change", mostrarDisponibilidade);
+        quarto.addEventListener("change", calcularTotal);
+        diarias.addEventListener("input", calcularTotal);
+        btnReserva.addEventListener("click", confirmarReserva);
+    </script>
 </Layout>
